@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Users</title>
+<!--/* Used only for editing in Pinegrow -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<!--*/-->
+</head>
+<body>
+	<section layout:fragment="content">
+		<form action="#"
+			th:action="@{/public/contact-crud-view/update/{id}(id=${contact.id})}"
+			th:object="${contact}" method="post">
+
+
+			<div class="col">
+				<div class="row">
+					<label for="first-name">First Name</label> <input type="text"
+						th:field="*{firstName}" id="first-name" placeholder="First Name">
+					<span th:if="${#fields.hasErrors('firstName')}"
+						th:errors="*{firstName}"></span>
+				</div>
+
+				<div class="row">
+					<label for="last-name">Last Name</label> <input type="text"
+						th:field="*{lastName}" id="last-name" placeholder="Last Name">
+					<span th:if="${#fields.hasErrors('lastName')}"
+						th:errors="*{lastName}"></span>
+				</div>
+
+				<div class="row">
+					<label for="email">Email</label> <input type="text"
+						th:field="*{email}" id="email" placeholder="Email"> <span
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+				</div>
+			</div>
+
+
+
+			<input type="submit" class="btn btn-primary" value="Add Contact">
+		</form>
+	</section>
+</body>
+</html>

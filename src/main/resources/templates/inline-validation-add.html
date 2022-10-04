@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+<title>Inline Validatio</title>
+<!--/* Used only for editing in Pinegrow -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<!--*/-->
+</head>
+<body>
+	<section layout:fragment="content">
+		<h3>Signup Form</h3>
+		<form hx-post="/public/inline-validation/contact">
+			<div hx-target="this" hx-swap="outerHTML">
+				<label>Email Address</label> <input name="email"
+					hx-post="/public/inline-validation/contact/email">
+
+			</div>
+			<div class="form-group">
+				<label>First Name</label> <input type="text" class="form-control"
+					name="firstName">
+			</div>
+			<div class="form-group">
+				<label>Last Name</label> <input type="text" class="form-control"
+					name="lastName">
+			</div>
+			<button class="btn btn-default">Submit</button>
+		</form>
+
+
+		<form action="#" th:action="@{/public/inline-validation/add-contact}"
+			th:object="${user}" method="post">
+
+
+			<div class="col">
+				<div class="row">
+					<label for="name">Name</label> <input type="text"
+						th:field="*{name}" id="name" placeholder="Name"> <span
+						th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+				</div>
+
+				<div class="row">
+					<label for="email">Email</label> <input type="text"
+						th:field="*{email}" id="email" placeholder="Email"> <span
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+				</div>
+			</div>
+
+
+
+
+			<input type="submit" class="btn btn-primary" value="Add User">
+
+		</form>
+
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+</head>
+<body>
+
+
+
+
+
+	<div id="modal"
+		_="on closeModal add .closing then wait for animationend then remove me">
+		<div class="modal-underlay" _="on click trigger closeModal"></div>
+		<div class="modal-content">
+
+			<section layout:fragment="modal-content">
+			</section>
+		</div>
+	</div>
+
+
+	<!-- 	<div id="modal-backdrop" class="modal-backdrop fade show" -->
+	<!-- 		style="display: block;"></div> -->
+	<!-- 	<div id="modal" class="modal fade show" tabindex="-1" -->
+	<!-- 		style="display: block;"> -->
+	<!-- 		<div class="modal-dialog modal-dialog-centered"> -->
+	<!-- 			<div class="modal-content"> -->
+	<!-- 				<section layout:fragment="modal-content"> -->
+	<!-- 					<div class="modal-header"> -->
+	<!-- 						<h5 class="modal-title">Modal title</h5> -->
+	<!-- 					</div> -->
+	<!-- 					<div class="modal-body"> -->
+	<!-- 						<p>Modal body text goes here.</p> -->
+	<!-- 					</div> -->
+	<!-- 					<div class="modal-footer"> -->
+	<!-- 						<button type="button" class="btn btn-secondary" -->
+	<!-- 							onclick="closeModal()">Close</button> -->
+	<!-- 					</div> -->
+	<!-- 				</section> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+	</section>
+</body>
+</html>

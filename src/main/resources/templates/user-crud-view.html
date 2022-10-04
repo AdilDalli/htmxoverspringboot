@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Users</title>
+<!--/* Used only for editing in Pinegrow -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<!--*/-->
+</head>
+<body>
+	<section layout:fragment="content">
+
+		<div th:if="${users.empty}">
+			<span>NO USER YET!</span>
+		</div>
+
+		<div th:unless="${users.empty}">
+			<h2>Users</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.email}"></td>
+						<td><a
+							th:href="@{/public/user-crud-view/edit/{id}(id=${user.id})}">Edit</a></td>
+						<td><a
+							th:href="@{/public/user-crud-view/delete/{id}(id=${user.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<p>
+			<a href="/public/user-crud-view/signup">Add a new user</a>
+		</p>
+		</div>
+	</section>
+</body>
+</html>

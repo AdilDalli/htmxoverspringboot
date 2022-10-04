@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>Tabs</title>
+<!--/* Used only for editing in Pinegrow -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<!--*/-->
+</head>
+<body>
+	<section layout:fragment="content">
+	
+		<div class="tab-list">
+			<a hx-get="/public/tabs/tab1" class="selected">Tab 1</a> <a hx-get="/public/tabs/tab2">Tab
+				2</a> <a hx-get="/public/tabs/tab3">Tab 3</a>
+		</div>
+
+	</section>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h2>Contact Editor</h2>
+<form hx-post="/public/click-to-edit-contact/commit" hx-target="#view"
+	hx-swap="outerHTML">
+	<div>
+		<div class="form-group">
+			<label for="firstName">First Name</label> <input id="firstName"
+				type="text" class="form-control" name="firstName"
+				th:value="${contact.firstName}">
+		</div>
+		<div class="form-group">
+			<label for="lastName">Last Name</label> <input id="lastName"
+				type="text" class="form-control" name="lastName"
+				th:value="${contact.lastName}">
+		</div>
+		<div class="form-group">
+			<label for="email">Email address</label> <input id="email"
+				type="email" class="form-control" name="email"
+				th:value="${contact.email}">
+		</div>
+
+		<button class="btn btn-primary" name="submit">Update</button>
+	</div>
+</form>

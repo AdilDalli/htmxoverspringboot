@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout.html}"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+<title>Contacts</title>
+<!--/* Used only for editing in Pinegrow -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+<!--*/-->
+</head>
+<body>
+	<section layout:fragment="content">
+
+
+		<a  class="btn btn-primary"
+		hx-get="/public/contact-crud-view/add-new-contact"
+			hx-target="#crud-view" hx-swap="innerHTML">Add</a>
+
+		<div th:if="${contacts.empty}">
+			<span>NO CONTACT YET!</span>
+		</div>
+
+		<div th:unless="${contacts.empty}">
+			<h2>Contacts</h2>
+
+			<input class="form-control" type="search" name="search"
+				placeholder="Begin Typing To Search Contacts..."
+				hx-get="/public/contact-crud-view/find-contact"
+				hx-trigger="keyup changed delay:50ms, search, click[ctrlKey]"
+				hx-target="#search-results">
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Email</th>
+						<th>Email</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+
+				<th:block th:fragment="search-results" id="search-results">
+					<tbody>
+						<tr th:each="contact : ${contacts}">
+							<td th:text="${contact.firstName}"></td>
+							<td th:text="${contact.lastName}"></td>
+							<td th:text="${contact.email}"></td>
+							<td><a
+								hx-post="/public/contact-crud-view/edit-contact/{id}(id=${contact.id})}"
+								hx-target="#form" hx-swap="innerHTML">Edit</a></td>
+							<td><a
+								hx-post="/public/contact-crud-view/delete-contact/{id}(id=${contact.id})}"
+								hx-target="#table" hx-swap="innerHTML">Delete</a></td>
+						</tr>
+					</tbody>
+				</th:block>
+			</table>
+		</div>
+
+	</section>
+</body>
+</html>
